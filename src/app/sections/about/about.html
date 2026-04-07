@@ -1,0 +1,57 @@
+<section class="about2" id="about">
+  <div class="about2__inner">
+
+    <!-- LEFT: Content -->
+    <div class="about2__left">
+      <p class="about2__eyebrow">
+        <span class="about2__dot"></span>
+        Who We Are
+      </p>
+
+      <h2 class="about2__headline">
+        Making the<br>
+        <em>future of IT</em><br>
+        beautiful.
+      </h2>
+
+      <p class="about2__body">
+        ITWise provides expert consultancy covering the entire lifecycle
+        of system design and implementation across Uganda. We build
+        long-term relationships delivering high-quality, cost-effective
+        solutions with real, measurable impact.
+      </p>
+
+      <!-- Value cards -->
+      <div class="about2__values">
+        <div class="about2__value" *ngFor="let v of values">
+          <div class="about2__value-icon">{{ v.icon }}</div>
+          <div>
+            <div class="about2__value-title">{{ v.title }}</div>
+            <div class="about2__value-text">{{ v.text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Stats Panel (no canvas, 3D is global behind) -->
+    <div class="about2__right">
+      <div class="about2__glass-panel">
+        <div class="about2__glass-stat">
+          <span class="about2__glass-num">7<sup>+</sup></span>
+          <span class="about2__glass-label">Services</span>
+        </div>
+        <div class="about2__glass-divider"></div>
+        <div class="about2__glass-stat">
+          <span class="about2__glass-num">360°</span>
+          <span class="about2__glass-label">Coverage</span>
+        </div>
+        <div class="about2__glass-divider"></div>
+        <div class="about2__glass-stat">
+          <span class="about2__glass-num">24/7</span>
+          <span class="about2__glass-label">Support</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

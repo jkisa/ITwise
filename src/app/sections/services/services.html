@@ -1,0 +1,98 @@
+<!-- src/app/sections/services/services.html — COMPLETE REPLACEMENT (your structure preserved) -->
+<section class="svc2" id="services">
+
+  <div class="svc2__bg-grid"></div>
+
+  <div class="svc2__inner">
+
+    <!-- TOP HEADER -->
+    <div class="svc2__header">
+      <div class="svc2__header-left">
+        <p class="svc2__eyebrow">
+          <span class="svc2__eyebrow-dot"></span>
+          What We Offer
+        </p>
+        <h2 class="svc2__headline">
+          Everything you<br>need to <em>thrive.</em>
+        </h2>
+      </div>
+      <div class="svc2__header-right">
+        <p class="svc2__header-sub">
+          A comprehensive approach across enterprise architecture,
+          business analysis, systems engineering, content and service management.
+        </p>
+        <div class="svc2__big-number">0{{ services.length }}</div>
+      </div>
+    </div>
+
+    <!-- BODY: list + preview -->
+    <div class="svc2__body">
+
+      <!-- Service list -->
+      <div class="svc2__list">
+        <div
+          class="svc2__item"
+          *ngFor="let s of services; let i = index"
+          [class.svc2__item--active]="activeIndex === i"
+          (mouseenter)="onItemHover(i, true)"
+          (click)="setActive(i)"
+        >
+          <span class="svc2__item-num">{{ s.number }}</span>
+          <span class="svc2__item-title">{{ s.title }}</span>
+          <span class="svc2__item-tag" [style.color]="s.color">{{ s.tag }}</span>
+          <span class="svc2__item-arrow" [style.color]="s.color">→</span>
+          <div class="svc2__item-line" [style.background]="s.grad"></div>
+        </div>
+      </div>
+
+      <!-- Preview panel -->
+      <div class="svc2__preview">
+        <div
+          class="svc2__preview-card"
+          [style.border-color]="services[activeIndex]?.color + '33'"
+        >
+          <!-- Big icon -->
+          <div class="svc2__preview-icon" [style.color]="services[activeIndex]?.color">
+            {{ services[activeIndex]?.icon }}
+          </div>
+
+          <!-- Number -->
+          <div class="svc2__preview-num" [style.color]="services[activeIndex]?.color + '22'">
+            {{ services[activeIndex]?.number }}
+          </div>
+
+          <!-- Content -->
+          <div class="svc2__preview-content">
+            <div class="svc2__preview-tag"
+              [style.color]="services[activeIndex]?.color"
+              [style.border-color]="services[activeIndex]?.color + '44'"
+            >{{ services[activeIndex]?.tag }}</div>
+            <h3 class="svc2__preview-title">{{ services[activeIndex]?.title }}</h3>
+            <p class="svc2__preview-desc">{{ services[activeIndex]?.desc }}</p>
+            <div class="svc2__preview-cta" [style.background]="services[activeIndex]?.grad">
+              Learn More →
+            </div>
+          </div>
+
+          <!-- Glow -->
+          <div class="svc2__preview-glow"
+            [style.background]="'radial-gradient(circle at 50% 30%, ' + (services[activeIndex]?.color || '#38bdf8') + '20, transparent 70%)'"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom marquee -->
+  <div class="svc2__marquee">
+    <div class="svc2__marquee-track">
+      <span *ngFor="let n of [1,2,3,4,5,6,7,8,9,10,11,12]">
+        IT Solutions &nbsp;✦&nbsp; Security &nbsp;✦&nbsp;
+        Software Dev &nbsp;✦&nbsp; Analytics &amp; AI &nbsp;✦&nbsp;
+        Infrastructure &nbsp;✦&nbsp; Consulting &nbsp;✦&nbsp;
+      </span>
+    </div>
+  </div>
+
+</section>
