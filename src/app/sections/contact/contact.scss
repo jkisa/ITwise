@@ -6,6 +6,8 @@
   overflow: hidden;
   clip-path: inset(100% 0 0 0);
 
+
+
   &__line {
     position: absolute;
     top: 0; left: 4rem; right: 4rem;
@@ -16,6 +18,10 @@
       rgba(244,114,182,0.5) 70%,
       transparent
     );
+  }
+  .about2, .svc2, .contact {
+  background: rgba(6, 6, 15, 0.7) !important;
+  backdrop-filter: blur(4px);
   }
 
   // ---- ORBS ----
@@ -305,4 +311,66 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+
+// ─── MOBILE RESPONSIVE ────────────────────────────────────────────────────────
+
+@media (max-width: 767px) {
+
+  .contact {
+    padding: 5rem 1.5rem 0; // less side padding on narrow screens
+
+    &__line {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    // Stack the two columns vertically
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding-bottom: 3.5rem;
+    }
+
+    &__headline {
+      font-size: clamp(2rem, 9vw, 2.8rem); // slightly smaller on very narrow phones
+    }
+
+    &__sub {
+      max-width: 100%; // let it use full width when stacked
+      margin-bottom: 2rem;
+    }
+
+    // Tighten form card padding so it doesn't feel cramped
+    &__form-card {
+      padding: 1.75rem 1.25rem;
+    }
+
+    // Footer: stack the three items so they don't overlap
+    &__footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 1.5rem 0;
+    }
+  }
+}
+
+// Tablet: single column but with a bit more breathing room
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .contact {
+    padding: 6rem 2.5rem 0;
+
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    &__sub {
+      max-width: 100%;
+    }
+  }
 }

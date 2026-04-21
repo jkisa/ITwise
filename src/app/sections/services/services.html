@@ -1,31 +1,55 @@
-<!-- src/app/sections/services/services.html — COMPLETE REPLACEMENT (your structure preserved) -->
 <section class="svc2" id="services">
 
-  <div class="svc2__bg-grid"></div>
+  <!-- Animated gradient orbs (Lido-style ambient light) -->
+  <div class="svc2__orb svc2__orb--1"></div>
+  <div class="svc2__orb svc2__orb--2"></div>
+  <div class="svc2__orb svc2__orb--3"></div>
+
+  <!-- 3D Canvas — octahedron floats in background right -->
+  <div class="svc2__canvas-wrap" id="svc2-canvas"></div>
 
   <div class="svc2__inner">
 
-    <!-- TOP HEADER -->
+    <!-- ── HEADER ────────────────────────────────────────── -->
     <div class="svc2__header">
+
       <div class="svc2__header-left">
         <p class="svc2__eyebrow">
           <span class="svc2__eyebrow-dot"></span>
           What We Offer
         </p>
+        <!-- Typing headline -->
         <h2 class="svc2__headline">
-          Everything you<br>need to <em>thrive.</em>
+          <span class="svc2__typed" id="svc2-typed"></span>
         </h2>
       </div>
+
       <div class="svc2__header-right">
         <p class="svc2__header-sub">
           A comprehensive approach across enterprise architecture,
           business analysis, systems engineering, content and service management.
         </p>
-        <div class="svc2__big-number">0{{ services.length }}</div>
+
+        <!-- Lido-style stat counters -->
+        <div class="svc2__counters">
+          <div class="svc2__stat">
+            <span class="svc2__stat-val" id="svc2-stat-clients">0</span>
+            <span class="svc2__stat-label">Clients served</span>
+          </div>
+          <div class="svc2__stat">
+            <span class="svc2__stat-val" id="svc2-stat-projects">0</span>
+            <span class="svc2__stat-label">Projects delivered</span>
+          </div>
+          <div class="svc2__stat">
+            <span class="svc2__stat-val" id="svc2-stat-uptime">0%</span>
+            <span class="svc2__stat-label">Avg. uptime SLA</span>
+          </div>
+        </div>
       </div>
+
     </div>
 
-    <!-- BODY: list + preview -->
+    <!-- ── BODY ──────────────────────────────────────────── -->
     <div class="svc2__body">
 
       <!-- Service list -->
@@ -41,50 +65,56 @@
           <span class="svc2__item-title">{{ s.title }}</span>
           <span class="svc2__item-tag" [style.color]="s.color">{{ s.tag }}</span>
           <span class="svc2__item-arrow" [style.color]="s.color">→</span>
-          <div class="svc2__item-line" [style.background]="s.grad"></div>
         </div>
       </div>
 
-      <!-- Preview panel -->
+      <!-- Lido-style glass preview card -->
       <div class="svc2__preview">
         <div
-          class="svc2__preview-card"
-          [style.border-color]="services[activeIndex]?.color + '33'"
+          class="svc2__preview-card glass-card"
+          [style.--accent]="services[activeIndex]?.color"
         >
-          <!-- Big icon -->
+
           <div class="svc2__preview-icon" [style.color]="services[activeIndex]?.color">
             {{ services[activeIndex]?.icon }}
           </div>
 
-          <!-- Number -->
-          <div class="svc2__preview-num" [style.color]="services[activeIndex]?.color + '22'">
+          <div class="svc2__preview-num">
             {{ services[activeIndex]?.number }}
           </div>
 
-          <!-- Content -->
           <div class="svc2__preview-content">
-            <div class="svc2__preview-tag"
+            <span class="svc2__preview-tag"
               [style.color]="services[activeIndex]?.color"
-              [style.border-color]="services[activeIndex]?.color + '44'"
-            >{{ services[activeIndex]?.tag }}</div>
+              [style.border-color]="services[activeIndex]?.color + '55'"
+            >{{ services[activeIndex]?.tag }}</span>
+
             <h3 class="svc2__preview-title">{{ services[activeIndex]?.title }}</h3>
             <p class="svc2__preview-desc">{{ services[activeIndex]?.desc }}</p>
-            <div class="svc2__preview-cta" [style.background]="services[activeIndex]?.grad">
-              Learn More →
-            </div>
+
+            <button
+              class="svc2__preview-cta"
+              [style.background]="services[activeIndex]?.grad"
+            >
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
 
-          <!-- Glow -->
+          <!-- Radial glow matching accent -->
           <div class="svc2__preview-glow"
-            [style.background]="'radial-gradient(circle at 50% 30%, ' + (services[activeIndex]?.color || '#38bdf8') + '20, transparent 70%)'"
+            [style.background]="'radial-gradient(circle at 60% 20%, ' + (services[activeIndex]?.color || '#38bdf8') + '25, transparent 65%)'"
           ></div>
+
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Bottom marquee -->
+  <!-- ── MARQUEE ─────────────────────────────────────────── -->
   <div class="svc2__marquee">
     <div class="svc2__marquee-track">
       <span *ngFor="let n of [1,2,3,4,5,6,7,8,9,10,11,12]">
